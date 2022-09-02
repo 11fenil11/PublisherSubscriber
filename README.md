@@ -2,81 +2,77 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Prerequisite
+---
+# Coding Challenge - LeafiHome
 
-Install redis for server...
-1)https://redis.io/docs/getting-started/installation/install-redis-on-windows/
+This project is coding challenge given by LeafiHome.
 
-Install WSL in windows to have ubuntu on your system
-1) wsl --list --online
-2) wsl --install -d ubuntu
-3)set username: fenil
-4) pass: password
+I have implemented backend server for publisher-subcriber pattern using redis.
+
+* *Last Modification Date*: 02-09-2022
+* *Date Created*: 30-08-2022
 
 
-## Available Scripts
+    | Requirements | Completion Status |
+    | :---:         |     :---:      |
+    | Setting up Subscription   | ✅ |
+    | Publishing an event    | ✅|
 
-In the project directory, you can run:
+## Authors
+* [Fenil Milankumar Parmar](fenil.cad@gmail.com) - *(Developer)*
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Please set up your localmachine with below softwares, libraries, and plugins.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* [Visual Studio Code](https://code.visualstudio.com/) - Visual Studio code is a development tool. I used it to implement this project. Download it for better understanding and better visualization of my project code.
+* [Node](https://nodejs.org/en/) - Download the node from the given link.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installing
 
-### `npm run build`
+To install the project in your local machine do the following steps.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Download all the dependencies by using command `npm install`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Install redis for server following steps from this url.
+https://redis.io/docs/getting-started/installation/install-redis-on-windows/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Install WSL in windows to have ubuntu on your system
+1) `wsl --list --online`
+2) `wsl --install -d ubuntu`
+3) `set username and password`
+4) `sudo apt-get install redis`
+5) `sudo service redis-server start`
+6) `redis-cli`
 
-### `npm run eject`
+Run the application by using command in server folder `node index.js`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Built With
+* [Google chrome Browser](https://www.google.com/intl/en_ca/chrome/) - used as a visual tool to visualize the functionality of the web application.
+* [NPM](https://www.npmjs.com/) - The package manager for  [Node](https://nodejs.org/).
+* [Visual Studio Code](https://code.visualstudio.com/download) - IDE.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## External Dependencies Used
+* [@ioredis](https://www.npmjs.com/package/ioredis) - For publisher-subscriber.
 
-## Learn More
+## Backend API Endpoint
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* `POST`  **Subscribe to Topic**:
+```
+    http://localhost:8000/subscriber/{TOPIC} 
+    body: {url: <URL>}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* `POST`  **Publish to Topic**:
+```
+    http://localhost:8000/publish/{TOPIC} 
+    body: {message: <message>}
+```
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* `GET`  **Get event messages published by publisher**:
+```
+    http://localhost:8000/event/
+```
